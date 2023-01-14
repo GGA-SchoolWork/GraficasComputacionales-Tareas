@@ -1,0 +1,70 @@
+<html>
+
+<head>
+  <script type="application/javascript">
+    function drawRoundRect(ctx, x, y, width, height, color = "rgb(0,0,0)", fill = true, radius = 20) {
+      // Funcion para dibujar y llenar rectangulos redondos
+      ctx.strokeStyle = color;
+      ctx.beginPath();
+      ctx.roundRect(x, y, width, height, radius);
+      ctx.stroke();
+      if (fill) {
+        ctx.fillStyle = color;
+        ctx.fill();
+      } else {
+        ctx.stroke();
+      }
+    }
+
+    function drawCircle(ctx, x, y, radius, color = "rgb(0,0,0)", fill = true) {
+      // Funcion para dibujar y llenar circulos
+      ctx.strokeStyle = color
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2, true);
+      if (fill) {
+        ctx.fillStyle = color;
+        ctx.fill();
+      } else {
+        ctx.stroke();
+      }
+    }
+
+
+    function draw() {
+      var canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+
+        // iPhone 4
+        // Cuerpo de iPhone
+        drawRoundRect(ctx, x = 112, y = 20, width = 176, height = 345, color = "rgb(20,20,20)", fill = true);
+
+        // Bocina superior
+        drawRoundRect(ctx, x = 183, y = 45, width = 33, height = 5, color = "rgb(200,200,200)", fill = true);
+
+        // Camara frontal
+        drawCircle(ctx, x = 174, y = 48, radius = 3, color = "rgb(44, 89, 138)", fill = true);
+
+        // Pantalla
+        ctx.fillStyle = "rgb(144, 245, 241)";
+        ctx.fillRect(x = 132, y = 65, width = 136, height = 231);
+
+        // Boton
+        drawCircle(ctx, x = 200, y = 331, radius = 20, color = "rgb(70, 70, 70)", fill = false);
+
+        // Cuadro del boton
+        drawRoundRect(ctx, x = 190, y = 321, width = 20, height = 20, color = "rgb(255,255,255)", fill = false, radius = 5);
+
+
+      }
+    }
+  </script>
+</head>
+
+<body onload="draw();">
+  <div style="text-align: center;">
+    <canvas id="canvas" width="400" height="400"></canvas>
+  </div>
+</body>
+
+</html>
