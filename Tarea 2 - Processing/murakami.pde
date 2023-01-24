@@ -1,3 +1,5 @@
+// Crea flores con caras basadas en el estilo de Takashi Murakami
+
 float distance = 60.0;
 float bigRadius = 100.0;
 float smallRadius = 50.0;
